@@ -400,7 +400,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/blog/2018/12/24/Android学习随笔/" class="post-title-link" itemprop="url">Android学习随笔</a>
+                <a href="/blog/2018/12/24/Android学习随笔/" class="post-title-link" itemprop="url">Android学习随笔之--界面刷新</a>
               
             
           </h1>
@@ -425,7 +425,7 @@
                 
               
 
-              <time title="创建时间：2018-12-24 17:00:19 / 修改时间：17:52:58" itemprop="dateCreated datePublished" datetime="2018-12-24T17:00:19+08:00">2018-12-24</time>
+              <time title="创建时间：2018-12-24 17:00:19 / 修改时间：18:08:17" itemprop="dateCreated datePublished" datetime="2018-12-24T17:00:19+08:00">2018-12-24</time>
             
 
             
@@ -491,18 +491,16 @@
         
           
             <h1 id="安卓刷新界面"><a href="#安卓刷新界面" class="headerlink" title="安卓刷新界面"></a>安卓刷新界面</h1><p>Android提供了Invalidate方法来实现界面的刷新。</p>
-<p>##关于 Invalidate方法</p>
-<ul>
+<h2 id="关于-Invalidate方法"><a href="#关于-Invalidate方法" class="headerlink" title="关于 Invalidate方法"></a>关于 Invalidate方法</h2><ul>
 <li>Invalidate方法可以用来刷新界面。</li>
 <li>invalidate方法会执行draw过程，重新绘制View树。</li>
-<li>Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
-<p>Invalidate()不能直接在线程中调用，因为他是违背了单线程模型：Android UI操作并不是线程安全的，并且这些操作必须在UI线程中调用。</p>
-</blockquote>
-</li>
+<li>Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。</li>
 </ul>
-<h2 id="刷新界面的方法"><a href="#刷新界面的方法" class="headerlink" title="刷新界面的方法"></a>刷新界面的方法</h2><p>Android界面刷新方法有两种，分别是使用Handler来调用Invalidate()和使用postInvalidate()来实现在线程中刷新界面。</p>
-<h3 id="使用Invalidate-刷新界面"><a href="#使用Invalidate-刷新界面" class="headerlink" title="使用Invalidate()刷新界面"></a>使用Invalidate()刷新界面</h3><p>实例化一个Handler对象，并重写handleMessage方法调用invalidate()实现界面刷新;而在线程中通过sendMessage发送界面更新消息。</p>
-<h3 id="使用postInvalidate-刷新界面"><a href="#使用postInvalidate-刷新界面" class="headerlink" title="使用postInvalidate()刷新界面"></a>使用postInvalidate()刷新界面</h3><p>使用postInvalidate则比较简单，不需要handler，直接在线程中调用postInvalidate即可。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并不是线程安全的，并且这些操作必须在UI线程中调用。</p>
+<h2 id="如何使用方法来刷新界面"><a href="#如何使用方法来刷新界面" class="headerlink" title="如何使用方法来刷新界面"></a>如何使用方法来刷新界面</h2><p>Android界面刷新方法有两种，分别是使用Handler来调用Invalidate()和使用postInvalidate()来实现在线程中刷新界面。</p>
+<p></p><p>后续会补上具体代码….</p><p></p>
+<h3 id="使用-Invalidate-来刷新界面"><a href="#使用-Invalidate-来刷新界面" class="headerlink" title="使用 Invalidate()来刷新界面"></a>使用 Invalidate()来刷新界面</h3><p>实例化一个Handler对象，并重写handleMessage方法调用invalidate()实现界面刷新;而在线程中通过sendMessage发送界面更新消息。</p>
+<h3 id="使用-postInvalidate-来新界面"><a href="#使用-postInvalidate-来新界面" class="headerlink" title="使用 postInvalidate()来新界面"></a>使用 postInvalidate()来新界面</h3><p>使用postInvalidate则比较简单，不需要handler，直接在线程中调用postInvalidate即可。</p>
 
           
         
@@ -747,12 +745,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/blog/categories/index.html">
                     
-                    
-                      
-                    
-                      
-                    
-                      
                     
                       
                     
