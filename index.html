@@ -380,6 +380,185 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://andilie.github.io/blog/blog/2018/12/24/Android学习随笔/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Andilie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/blog/uploads/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Andilie BLog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/blog/2018/12/24/Android学习随笔/" class="post-title-link" itemprop="url">Android学习随笔</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-24 17:00:19 / 修改时间：17:52:58" itemprop="dateCreated datePublished" datetime="2018-12-24T17:00:19+08:00">2018-12-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/blog/categories/Android/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安卓刷新界面"><a href="#安卓刷新界面" class="headerlink" title="安卓刷新界面"></a>安卓刷新界面</h1><p>Android提供了Invalidate方法来实现界面的刷新。</p>
+<p>##关于 Invalidate方法</p>
+<ul>
+<li>Invalidate方法可以用来刷新界面。</li>
+<li>invalidate方法会执行draw过程，重新绘制View树。</li>
+<li>Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
+<p>Invalidate()不能直接在线程中调用，因为他是违背了单线程模型：Android UI操作并不是线程安全的，并且这些操作必须在UI线程中调用。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="刷新界面的方法"><a href="#刷新界面的方法" class="headerlink" title="刷新界面的方法"></a>刷新界面的方法</h2><p>Android界面刷新方法有两种，分别是使用Handler来调用Invalidate()和使用postInvalidate()来实现在线程中刷新界面。</p>
+<h3 id="使用Invalidate-刷新界面"><a href="#使用Invalidate-刷新界面" class="headerlink" title="使用Invalidate()刷新界面"></a>使用Invalidate()刷新界面</h3><p>实例化一个Handler对象，并重写handleMessage方法调用invalidate()实现界面刷新;而在线程中通过sendMessage发送界面更新消息。</p>
+<h3 id="使用postInvalidate-刷新界面"><a href="#使用postInvalidate-刷新界面" class="headerlink" title="使用postInvalidate()刷新界面"></a>使用postInvalidate()刷新界面</h3><p>使用postInvalidate则比较简单，不需要handler，直接在线程中调用postInvalidate即可。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://andilie.github.io/blog/blog/2018/12/24/hello-world/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -556,14 +735,48 @@
                 
                   <a href="/blog/archives/">
                 
-                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
 
               
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/blog/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/blog/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
             </nav>
           
