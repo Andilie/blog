@@ -111,18 +111,18 @@
 
 
 
-  <meta name="description" content="安卓刷新界面Android提供了Invalidate方法来实现界面的刷新。 关于 Invalidate方法 Invalidate方法可以用来刷新界面。 invalidate方法会执行draw过程，重新绘制View树。 Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。  小结Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并不">
+  <meta name="description" content="安卓刷新界面Android提供了Invalidate方法来实现界面的刷新。 关于 Invalidate方法 Invalidate方法可以用来刷新界面。 invalidate方法会执行draw过程，重新绘制View树。 Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。  小结 Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并">
 <meta name="keywords" content="-Android -学习 -随笔">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android学习随笔之--界面刷新">
 <meta property="og:url" content="https://andilie.github.io/blog/2018/12/24/Android学习随笔/index.html">
 <meta property="og:site_name" content="Andilie BLog">
-<meta property="og:description" content="安卓刷新界面Android提供了Invalidate方法来实现界面的刷新。 关于 Invalidate方法 Invalidate方法可以用来刷新界面。 invalidate方法会执行draw过程，重新绘制View树。 Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。  小结Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并不">
+<meta property="og:description" content="安卓刷新界面Android提供了Invalidate方法来实现界面的刷新。 关于 Invalidate方法 Invalidate方法可以用来刷新界面。 invalidate方法会执行draw过程，重新绘制View树。 Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。  小结 Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-24T10:08:17.873Z">
+<meta property="og:updated_time" content="2018-12-24T10:31:38.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android学习随笔之--界面刷新">
-<meta name="twitter:description" content="安卓刷新界面Android提供了Invalidate方法来实现界面的刷新。 关于 Invalidate方法 Invalidate方法可以用来刷新界面。 invalidate方法会执行draw过程，重新绘制View树。 Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。  小结Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并不">
+<meta name="twitter:description" content="安卓刷新界面Android提供了Invalidate方法来实现界面的刷新。 关于 Invalidate方法 Invalidate方法可以用来刷新界面。 invalidate方法会执行draw过程，重新绘制View树。 Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。  小结 Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并">
 
 
 
@@ -427,7 +427,7 @@
                 
               
 
-              <time title="创建时间：2018-12-24 17:00:19 / 修改时间：18:08:17" itemprop="dateCreated datePublished" datetime="2018-12-24T17:00:19+08:00">2018-12-24</time>
+              <time title="创建时间：2018-12-24 17:00:19 / 修改时间：18:31:38" itemprop="dateCreated datePublished" datetime="2018-12-24T17:00:19+08:00">2018-12-24</time>
             
 
             
@@ -503,11 +503,20 @@
 <li>invalidate方法会执行draw过程，重新绘制View树。</li>
 <li>Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。</li>
 </ul>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并不是线程安全的，并且这些操作必须在UI线程中调用。</p>
-<h2 id="如何使用方法来刷新界面"><a href="#如何使用方法来刷新界面" class="headerlink" title="如何使用方法来刷新界面"></a>如何使用方法来刷新界面</h2><p>Android界面刷新方法有两种，分别是使用Handler来调用Invalidate()和使用postInvalidate()来实现在线程中刷新界面。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><blockquote>
+<p>Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并不是线程安全的，并且这些操作必须在UI线程中调用。</p>
+</blockquote>
+<h2 id="如何使用方法来刷新界面"><a href="#如何使用方法来刷新界面" class="headerlink" title="如何使用方法来刷新界面"></a>如何使用方法来刷新界面</h2><p>Android界面刷新方法有两种，分别是使用Handler来调用Invalidate()和直接使用postInvalidate()来实现在线程中刷新界面。</p>
 <p></p><p>后续会补上具体代码….</p><p></p>
-<h3 id="使用-Invalidate-来刷新界面"><a href="#使用-Invalidate-来刷新界面" class="headerlink" title="使用 Invalidate()来刷新界面"></a>使用 Invalidate()来刷新界面</h3><p>实例化一个Handler对象，并重写handleMessage方法调用invalidate()实现界面刷新;而在线程中通过sendMessage发送界面更新消息。</p>
+<h3 id="使用-Invalidate-来刷新界面"><a href="#使用-Invalidate-来刷新界面" class="headerlink" title="使用 Invalidate()来刷新界面"></a>使用 Invalidate()来刷新界面</h3><blockquote>
+<p>实例化一个Handler对象，并重写handleMessage方法调用invalidate()实现界面刷新;而在线程中通过sendMessage发送界面更新消息。</p>
+</blockquote>
 <h3 id="使用-postInvalidate-来新界面"><a href="#使用-postInvalidate-来新界面" class="headerlink" title="使用 postInvalidate()来新界面"></a>使用 postInvalidate()来新界面</h3><p>使用postInvalidate则比较简单，不需要handler，直接在线程中调用postInvalidate即可。</p>
+<h3 id="区别："><a href="#区别：" class="headerlink" title="区别："></a>区别：</h3><ol>
+<li>invalidate方法只能用于UI线程中。</li>
+<li>postInvalidate方法可以用在非线程之中。</li>
+</ol>
+<h2 id="相关知识点总结"><a href="#相关知识点总结" class="headerlink" title="相关知识点总结"></a>相关知识点总结</h2><p>invalidate方法只能用于UI线程中，在非UI线程中，可直接使用postInvalidate方法，这样就省去使用handler的烦恼。</p>
 
       
     </div>
@@ -526,7 +535,23 @@
     
 
     
-
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------ETX-------------</div>
+    
+</div>
+<br>
+<div style="border: 1px solid #999">
+<div style="margin-left:10px">
+<span style="font-weight:blod">版权声明</span>
+<br>
+欢迎转载，转载请标明文章出处
+</div>
+</div>
+  
+</div>
     <footer class="post-footer">
       
         <div class="post-tags">
@@ -717,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓刷新界面"><span class="nav-number">1.</span> <span class="nav-text">安卓刷新界面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-Invalidate方法"><span class="nav-number">1.1.</span> <span class="nav-text">关于 Invalidate方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">1.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用方法来刷新界面"><span class="nav-number">1.2.</span> <span class="nav-text">如何使用方法来刷新界面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Invalidate-来刷新界面"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用 Invalidate()来刷新界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-postInvalidate-来新界面"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用 postInvalidate()来新界面</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓刷新界面"><span class="nav-number">1.</span> <span class="nav-text">安卓刷新界面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于-Invalidate方法"><span class="nav-number">1.1.</span> <span class="nav-text">关于 Invalidate方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">1.1.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用方法来刷新界面"><span class="nav-number">1.2.</span> <span class="nav-text">如何使用方法来刷新界面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Invalidate-来刷新界面"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用 Invalidate()来刷新界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-postInvalidate-来新界面"><span class="nav-number">1.2.2.</span> <span class="nav-text">使用 postInvalidate()来新界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别："><span class="nav-number">1.2.3.</span> <span class="nav-text">区别：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关知识点总结"><span class="nav-number">1.3.</span> <span class="nav-text">相关知识点总结</span></a></li></ol></li></ol></div>
             
 
           </div>

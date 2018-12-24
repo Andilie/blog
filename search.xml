@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Android学习随笔之--界面刷新]]></title>
     <url>%2Fblog%2F2018%2F12%2F24%2FAndroid%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94%2F</url>
-    <content type="text"><![CDATA[安卓刷新界面Android提供了Invalidate方法来实现界面的刷新。 关于 Invalidate方法 Invalidate方法可以用来刷新界面。 invalidate方法会执行draw过程，重新绘制View树。 Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。 小结Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并不是线程安全的，并且这些操作必须在UI线程中调用。 如何使用方法来刷新界面Android界面刷新方法有两种，分别是使用Handler来调用Invalidate()和使用postInvalidate()来实现在线程中刷新界面。 后续会补上具体代码…. 使用 Invalidate()来刷新界面实例化一个Handler对象，并重写handleMessage方法调用invalidate()实现界面刷新;而在线程中通过sendMessage发送界面更新消息。 使用 postInvalidate()来新界面使用postInvalidate则比较简单，不需要handler，直接在线程中调用postInvalidate即可。]]></content>
+    <content type="text"><![CDATA[安卓刷新界面Android提供了Invalidate方法来实现界面的刷新。 关于 Invalidate方法 Invalidate方法可以用来刷新界面。 invalidate方法会执行draw过程，重新绘制View树。 Invalidate方法必须在UI线程中工作，所以它只能在UI线程中调用。 小结 Invalidate()不能直接在线程中调用，原因是其违背了单线程模型：Android UI操作并不是线程安全的，并且这些操作必须在UI线程中调用。 如何使用方法来刷新界面Android界面刷新方法有两种，分别是使用Handler来调用Invalidate()和直接使用postInvalidate()来实现在线程中刷新界面。 后续会补上具体代码…. 使用 Invalidate()来刷新界面 实例化一个Handler对象，并重写handleMessage方法调用invalidate()实现界面刷新;而在线程中通过sendMessage发送界面更新消息。 使用 postInvalidate()来新界面使用postInvalidate则比较简单，不需要handler，直接在线程中调用postInvalidate即可。 区别： invalidate方法只能用于UI线程中。 postInvalidate方法可以用在非线程之中。 相关知识点总结invalidate方法只能用于UI线程中，在非UI线程中，可直接使用postInvalidate方法，这样就省去使用handler的烦恼。]]></content>
       <categories>
         <category>Android</category>
         <category>随笔</category>
